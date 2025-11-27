@@ -72,7 +72,7 @@ const contactDetails = [
     label: 'Адрес',
     values: [
       {
-        text: 'г. Москва, ул. Примерная, д. 42, офис 301',
+        text: 'г. Екатеринбург, ул. Ленина, д. 28',
         link: 'https://yandex.ru/maps/',
       },
     ],

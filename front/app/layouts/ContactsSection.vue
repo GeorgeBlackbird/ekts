@@ -3,10 +3,10 @@
     <div class="contacts-container">
       <div class="section-header" :class="{ visible: isVisible }">
         <h2 class="section-title">
-          Как нас <span class="highlight">найти</span>
+          Всё в твоих <span class="highlight">руках</span>
         </h2>
         <p class="section-subtitle">
-          Приходи в наш офис или свяжись с нами удобным способом
+          Приходи тренироваться в Твой спортивный зал!
         </p>
       </div>
 
