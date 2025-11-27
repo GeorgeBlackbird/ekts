@@ -6,7 +6,7 @@
       :href="`#${item.id}`"
       class="nav-link"
       :class="{ active: activeSection === item.id }"
-      @click.prevent="$emit('navigate', item.id)"
+      @click.prevent="handleClick(item.id)"
     >
       {{ item.label }}
     </a>
@@ -26,7 +26,7 @@ interface Props {
 
 defineProps<Props>();
 
-defineEmits<{
+const emit = defineEmits<{
   navigate: [sectionId: string];
 }>();
 
@@ -37,8 +37,11 @@ const menuItems: MenuItem[] = [
   { id: 'contact', label: 'Связаться' },
   { id: 'contacts', label: 'Контакты' },
 ];
-</script>
 
+const handleClick = (sectionId: string) => {
+  emit('navigate', sectionId);
+};
+</script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/navigation.scss';

@@ -17,7 +17,6 @@
           :icon="advantage.icon"
           :title="advantage.title"
           :description="advantage.description"
-          :delay="index * 0.1"
           :is-section-visible="isVisible"
         />
       </div>

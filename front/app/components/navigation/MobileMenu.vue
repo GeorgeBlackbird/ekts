@@ -15,7 +15,7 @@
         <NavigationMenu
           :active-section="activeSection"
           :is-mobile="true"
-          @navigate="$emit('navigate', $event)"
+          @navigate="handleNavigate"
         />
 
         <div class="mobile-menu-footer">
@@ -68,12 +68,14 @@ const emit = defineEmits<{
   navigate: [sectionId: string];
 }>();
 
+const handleNavigate = (sectionId: string) => {
+  emit('navigate', sectionId);
+};
+
 const handleDownload = () => {
   emit('navigate', 'contacts');
-  emit('close');
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import '@/assets/styles/navigation.scss';

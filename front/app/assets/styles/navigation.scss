@@ -235,13 +235,13 @@
   }
 }
 
-// === Mobile Menu ===
+// === Mobile Menu (теперь вне header) ===
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 999;
+  z-index: 1100; // Выше header
   display: flex;
   justify-content: flex-end;
 }
