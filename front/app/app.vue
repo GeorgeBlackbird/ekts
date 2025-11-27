@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { TemplateReviews } from "./services/api";
+import { TemplateReviews } from "./services/reviewsApi";
 
 onMounted(async () => {
   const temp: TemplateReviews = new TemplateReviews(
