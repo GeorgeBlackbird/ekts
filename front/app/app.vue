@@ -1,6 +1,7 @@
 <template>
   <NConfigProvider :theme-overrides="themeOverrides">
     <NMessageProvider>
+      <MainHeader />
       <div class="app-container">
         <WelcomeSection />
         <AdvantagesSection />
@@ -12,11 +13,8 @@
         
         <ContactFormSection />
         <ContactsSection />
-        
-        <footer class="footer-placeholder">
-          <!-- Футер -->
-        </footer>
       </div>
+      <MainFooter />
     </NMessageProvider>
   </NConfigProvider>
 </template>
@@ -24,6 +22,9 @@
 <script setup lang="ts">
 import { NConfigProvider, NMessageProvider } from 'naive-ui';
 import type { GlobalThemeOverrides } from 'naive-ui';
+
+import MainHeader from '~/components/navigation/MainHeader.vue';
+import MainFooter from '~/components/footer/MainFooter.vue';
 import WelcomeSection from '~/layouts/WelcomeSection.vue';
 import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
 import ContactFormSection from '~/layouts/ContactFormSection.vue';
