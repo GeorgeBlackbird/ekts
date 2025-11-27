@@ -1,6 +1,7 @@
 <template>
   <NConfigProvider :theme-overrides="themeOverrides">
     <NMessageProvider>
+      <MainHeader />
       <div class="app-container">
         <WelcomeSection />
         <AdvantagesSection />
@@ -24,6 +25,8 @@
 <script setup lang="ts">
 import { NConfigProvider, NMessageProvider } from 'naive-ui';
 import type { GlobalThemeOverrides } from 'naive-ui';
+
+import MainHeader from '~/components/navigation/MainHeader.vue';
 import WelcomeSection from '~/layouts/WelcomeSection.vue';
 import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
 import ContactFormSection from '~/layouts/ContactFormSection.vue';
