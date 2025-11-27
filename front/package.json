@@ -1,0 +1,24 @@
+{
+  "name": "front",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^4.2.1",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@bg-dev/nuxt-naiveui": "^2.0.0",
+    "@iconify/vue": "^5.0.0",
+    "naive-ui": "^2.43.2",
+    "nuxt-icon": "^1.0.0-beta.7",
+    "pinia": "^3.0.4"
+  }
+}
