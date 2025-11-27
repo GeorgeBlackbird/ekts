@@ -3,11 +3,9 @@
     <NMessageProvider>
       <div class="app-container">
         <WelcomeSection />
+        <AdvantagesSection />
         
-        <section id="advantages" class="section-placeholder">
-          <!-- Блок преимуществ -->
-        </section>
-        
+        <!-- Остальные секции добавим позже -->
         <section id="reviews" class="section-placeholder">
           <!-- Блок отзывов -->
         </section>
@@ -32,6 +30,7 @@
 import { NConfigProvider, NMessageProvider } from 'naive-ui';
 import type { GlobalThemeOverrides } from 'naive-ui';
 import WelcomeSection from '~/layouts/WelcomeSection.vue';
+import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
