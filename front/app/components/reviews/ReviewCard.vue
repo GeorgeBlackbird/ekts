@@ -2,7 +2,7 @@
   <div class="review-card">
     <div class="card-header">
       <div class="user-avatar">
-        <span class="avatar-text">{{ initials }}</span>
+        <img :src="review.Icon" alt="{{ initials }}">
       </div>
       <div class="user-info">
         <div class="user-name">{{ fullName }}</div>
@@ -30,17 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { Icon } from "@iconify/vue";
-
-interface UserReview {
-  LastName: string;
-  FirstName: string;
-  FatherName: string;
-  Gender: "Женщина" | "Мужчина";
-  Star: number;
-  Review?: string;
-}
+import { computed } from 'vue';
+import { Icon } from '@iconify/vue';
+import type { UserReview } from '~/services/reviewsApi'; 
 
 interface Props {
   review: UserReview;

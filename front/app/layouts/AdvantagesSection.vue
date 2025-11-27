@@ -22,12 +22,15 @@
         />
       </div>
     </div>
+
+    <WeatherRecommendation class="weather" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-import AdvantageCard from "~/components/advantages/AdvantageCard.vue";
+import { useScrollAnimation } from '~/composables/useScrollAnimation';
+import AdvantageCard from '~/components/advantages/AdvantageCard.vue';
+import WeatherRecommendation from '~/components/advantages/WeatherRecommendation.vue';
 
 const { isVisible, elementRef: sectionRef } = useScrollAnimation(0.15);
 

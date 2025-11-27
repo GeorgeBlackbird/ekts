@@ -58,11 +58,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
-import { Icon } from "@iconify/vue";
-import { NSpin, NButton, useMessage } from "naive-ui";
-import { TemplateReviews } from "@/services/reviewsApi";
-import ReviewCard from "./ReviewCard.vue";
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { Icon } from '@iconify/vue';
+import { NSpin, NButton, useMessage } from 'naive-ui';
+import { TemplateReviews, type UserReview } from '@/services/reviewsApi';
+import ReviewCard from './ReviewCard.vue';
 
 interface Props {
   isVisible?: boolean;
@@ -71,15 +71,6 @@ interface Props {
 defineProps<Props>();
 
 const message = useMessage();
-
-interface UserReview {
-  LastName: string;
-  FirstName: string;
-  FatherName: string;
-  Gender: "Женщина" | "Мужчина";
-  Star: number;
-  Review?: string;
-}
 
 const reviews = ref<UserReview[]>([]);
 const currentIndex = ref(0);
