@@ -1,75 +1,315 @@
-# Nuxt Minimal Starter
+# Твой Фитнес-Тренер - Лендинг
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Современный адаптивный лендинг для мобильного приложения "Твой Финтнес-Тренер", созданный с использованием Nuxt 3 и современных веб-технологий.
 
-## Setup
+## Демо
 
-Make sure to install dependencies:
+Лендинг включает:
+
+- приветственный экран с анимациями
+- блок преимуществ приложения
+- советы по занятиям в зависимости от погоды (через API OpenWeather)
+- отзывы пользователей (генерация с API рандомайзера)
+- форма обратной связи с валидацией
+- контакты с картой (iframe Яндекс.Карты) и QR-кодом
+- полностью адаптивный дизайн (360px - 1920px+)
+
+## Технологический стек
+
+- Nuxt 3 (метафреймворк для Vue.js)
+- Vue 3 (JavaScript-фреймворк (Composition API))
+- TypeScript (типизированный JavaScript)
+- SCSS (препроцессор CSS)
+- Naive UI (библиотека UI-компонентов)
+- Iconify (библиотека иконок)
+- Pinia (хранилище состояния для Vue)
+- Intersection Observer API (отслеживание видимости элементов)
+- OpenWeather API (API для получения погоды)
+- DiceBar (аватарки пользователей)
+- RandomDataTools API (API для генерации людей)
+- QR Server API (генерация QR-кода)
+
+## Зависимости
+
+Основные зависимости:
+
+```json
+{
+  "nuxt": "^3.x",
+  "vue": "^3/x",
+  "naive-ui": "^2.x",
+  "@iconify/vue": "^4.x"
+}
+```
+
+Dev зависимости:
+
+```json
+{
+  "typescript": "^5.x",
+  "sass": "^1.x",
+  "vite": "^5.x"
+}
+```
+
+## Установка и запуск
+
+Требования:
+
+- Node.js >= 18.0.0
+- npm >= 8.0.0
+
+Распакуйте архив, выполните следующие команды в PowerShell, командной строке или другом интерфейсе bash:
 
 ```bash
-# npm
+cd front
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Приложение будет доступно по адресу `http://localhost:3000` в режиме разработки.
 
-Build the application for production:
+**Сборка для продакшена:**
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run preview # предпросмотр продакшн-сборки
 ```
 
-Locally preview production build:
+## Структура
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```
+app/
+├── assets/
+│   └── styles/               # SCSS стили
+│       ├── welcome.scss      # Стили приветственного экрана
+│       ├── advantages.scss   # Стили блока преимуществ
+│       ├── reviews.scss      # Стили блока отзывов
+│       ├── contact-form.scss # Стили формы обратной связи
+│       ├── contacts.scss     # Стили блока контактов
+│       ├── navigation.scss   # Стили навигации
+│       └── footer.scss       # Стили футера
+│
+├── components/
+│   ├── navigation/            # Компоненты навигации
+│   │   ├── MainHeader.vue     # Основной header
+│   │   ├── NavigationMenu.vue # Меню навигации
+│   │   └── MobileMenu.vue     # Мобильное меню
+│   │
+│   ├── advantages/                   # Компоненты преимуществ
+│   │   ├── AdvantageCard.vue         # Карточка преимущества
+│   │   └── WeatherRecommendation.vue # Карточка погоды
+│   │
+│   ├── reviews/               # Компоненты отзывов
+│   │   ├── ReviewCarousel.vue # Карусель отзывов
+│   │   └── ReviewCard.vue     # Карточка отзыва
+│   │
+│   ├── contact/             # Компоненты формы связи
+│   │   ├── ContactInfo.vue  # Информация для связи
+│   │   └── ContactForm.vue  # Форма обратной связи
+│   │
+│   ├── contacts/              # Компоненты блока контактов
+│   │   ├── ContactMap.vue     # Карта с офисом
+│   │   ├── ContactDetails.vue # Детали контактов
+│   │   └── DownloadQR.vue     # QR-код для скачивания
+│   │
+│   └── footer/                # Компоненты футера
+│       ├── MainFooter.vue     # Основной футер
+│       ├── FooterColumn.vue   # Колонка футера
+│       └── NewsletterForm.vue # Форма подписки
+│
+├── composables/
+│   ├── useScrollAnimation.ts # Composable для анимаций скролла
+│   └── useActiveSection.ts   # Composable для активной секции
+│
+├── layouts/
+│   ├── WelcomeSection.vue     # Приветственный экран
+│   ├── AdvantagesSection.vue  # Блок преимуществ
+│   ├── ReviewsSection.vue     # Блок отзывов
+│   ├── ContactFormSection.vue # Блок формы обратной связи
+│   └── ContactsSection.vue    # Блок контактов
+│
+├── mock/
+│   └── reviews.json          # Моковые тексты отзывов
+│
+├── services/
+│   ├── reviewsApi.ts         # API для получения отзывов
+│   ├── qrApi.ts              # API для генерации QR-кодов
+│   └── weatherApi.ts         # API для получения погоды
+│
+└── app.vue                   # Главный компонент приложения
+nuxt.config.ts            # Конфигурация Nuxt
+package.json              # Зависимости проекта
+tsconfig.json             # Конфигурация TypeScript
+README.md                 # Документация проекта
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Описание блоков
+
+**1. Приветственный экран (WelcomeSection)**
+
+Цель: Создать первое впечатление и сразу показать суть продукта.
+
+Особенности:
+
+- Градиентный фон с анимацией
+- Макет телефона с демо приложения
+- Плавающие карточки со статистикой
+- Призыв к действию (CTA кнопки)
+- Анимации появления элементов
+- Индикатор прокрутки
+
+Компоненты:
+
+- HeroContent.vue (текст и кнопки)
+- HeroImage.vue (макет телефона)
+
+**2. Блок преимуществ (AdvantagesSection)**
+
+Цель: Показать, почему продукт лучше других
+
+Особенности:
+
+- Сетка из 6 карточек преимуществ
+- Иконки для каждого преимущества
+- Hover-эффекты с градиентным border
+- Появление при скролле с задержками
+- Адаптивная раскладка (3/2/1 колонок)
+
+Компоненты:
+
+- AdvantageCard.vue (карточка преимущества)
+
+**3. Блок отзывов (ReviewsSection)**
+
+Цель: Повысить доверие через социальное доказательство
+
+Особенности:
+
+- Реалистичные данные через API (RandomDataTools API + моковые тесты)
+- Карусель с автопрокруткой (5 сек)
+- 12 отзывов с именами, аватарами, рейтингами и текстами
+- Навигация и индикаторы
+- Статистика (рейтинг, пользователи)
+
+Компоненты:
+
+- ReviewCarousel.vue (карусель)
+- ReviewCard.vue (карточка отзыва)
+
+**4. Форма обратной связи (ContactFormSection)**
+
+Цель: Дать возможность связаться и оставить заявку
+
+Особенности:
+
+- Двухколоночная раскладка (инфо + форма)
+- Валидация всех полей в реальном времени
+- Success-состояние после отправки
+- Контактная информация с иконками
+- Социальные сети
+- Градиентный блок с контактами
+
+Компоненты:
+
+- ContactInfo.vue (контактная информация)
+- ContactForm.vue (форма с валидацией)
+
+**5. Блок контактов (ContactsSection)**
+
+Цель: Дать возможность быстро найти компанию
+
+Особенности:
+
+- Интерактивная карта (Яндекс.Карты iframe)
+- QR-код для скачивания (генерация через API)
+- Детальные контакты (адрес, телефоны, email)
+- Режим работы
+- Store badges (App Store, Google Play)
+- Социальные сети
+- Quick Actions кнопки
+
+Компоненты:
+
+- ContactMap.vue — карта с офисом
+- ContactDetails.vue — контактные данные
+- DownloadQR.vue — QR-код и store badges
+
+**6. Навигация (MainHeader)**
+
+Цель: Обеспечить удобное перемещение по странице
+
+Особенности:
+
+- Sticky header с blur-эффектом
+- Автоопределение активной секции (Intersection Observer)
+- Изменение стиля при скролле
+- Адаптивное бургер-меню для мобильных
+- Плавная прокрутка к секциям
+- Блокировка скролла при открытом меню
+
+Компоненты:
+
+- MainHeader.vue — основной header
+- NavigationMenu.vue — меню навигации
+- MobileMenu.vue — мобильное slide-in меню
+
+**7. Футер (MainFooter)**
+
+Цель: Разместить дублирующую информацию и завершающие элементы
+
+Особенности:
+
+- Тёмный градиентный фон
+- 4 колонки (бренд, навигация, ресурсы, подписка)
+- Форма подписки на новости с валидацией
+- Социальные сети
+- Legal-ссылки (Privacy, Terms, Cookies)
+- Floating кнопка "Наверх"
+
+Компоненты:
+
+- MainFooter.vue — основной футер
+- FooterColumn.vue — колонка с ссылками
+- NewsletterForm.vue — форма подписки
+
+## Ключевые особенности
+
+Адаптивность
+
+- Полностью responsive дизайн
+- Breakpoints: 360px, 479px, 767px, 1023px, 1200px, 1440px+
+- Адаптивная типографика через clamp()
+- Mobile-first подход
+
+Производительность
+
+- Lazy loading компонентов
+- Passive event listeners
+- Оптимизированные анимации (CSS transforms)
+- Debounce для scroll handlers
+
+Анимации
+
+- Появление блоков при скролле (Intersection Observer)
+- Плавные transitions через cubic-bezier
+- Hover-эффекты на всех интерактивных элементах
+- Автоматическая карусель
+
+UX/UI
+
+- Градиентные акценты
+- Единая цветовая схема (#667eea, #764ba2, #f093fb)
+- Консистентные border-radius и shadows
+- Микроанимации для обратной связи
+
+## Браузерная поддержка
+
+Проверено на Chrome, Firefox, Safari, Edge
+
+## Авторы
+
+Дроздов Георгий Дмитриевич
+Таксатов Иван Александрович
+
+ГАПОУ СО УГК им. И.И. Ползунова
