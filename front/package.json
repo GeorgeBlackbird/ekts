@@ -17,8 +17,8 @@
   "devDependencies": {
     "@bg-dev/nuxt-naiveui": "^2.0.0",
     "@iconify/vue": "^5.0.0",
+    "@pinia/nuxt": "^0.11.3",
     "naive-ui": "^2.43.2",
-    "nuxt-icon": "^1.0.0-beta.7",
-    "pinia": "^3.0.4"
+    "nuxt-icon": "^1.0.0-beta.7"
   }
 }
