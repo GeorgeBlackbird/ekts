@@ -10,13 +10,8 @@
           <!-- Блок отзывов -->
         </section>
         
-        <section id="contact" class="section-placeholder">
-          <!-- Блок обратной связи -->
-        </section>
-        
-        <section id="contacts" class="section-placeholder">
-          <!-- Блок контактов -->
-        </section>
+        <ContactFormSection />
+        <ContactsSection />
         
         <footer class="footer-placeholder">
           <!-- Футер -->
@@ -31,6 +26,8 @@ import { NConfigProvider, NMessageProvider } from 'naive-ui';
 import type { GlobalThemeOverrides } from 'naive-ui';
 import WelcomeSection from '~/layouts/WelcomeSection.vue';
 import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
+import ContactFormSection from '~/layouts/ContactFormSection.vue';
+import ContactsSection from '~/layouts/ContactsSection.vue';
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
