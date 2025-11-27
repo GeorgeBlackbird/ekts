@@ -14,7 +14,7 @@
         <div class="weather-info">
           <div class="temperature">{{ Math.round(weather.main.temp) }}°C</div>
           <div class="weather-description">
-            {{ weather.main.description }}
+            {{ weather.weather[0]?.description }}
           </div>
         </div>
 

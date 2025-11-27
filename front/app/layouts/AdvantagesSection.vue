@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <WeatherRecommendation />
+    <WeatherRecommendation class="weather" />
   </section>
 </template>
 
