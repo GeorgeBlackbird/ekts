@@ -8,84 +8,26 @@
       </div>
 
       <div class="qr-code-container">
-        <div class="qr-code">
-          <!-- Можно использовать реальный QR или SVG-заглушку -->
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- QR-код паттерн (упрощенная версия) -->
-            <rect width="200" height="200" fill="white"/>
-            <g fill="#1a1a1a">
-              <!-- Углы -->
-              <rect x="10" y="10" width="50" height="50"/>
-              <rect x="20" y="20" width="30" height="30" fill="white"/>
-              <rect x="140" y="10" width="50" height="50"/>
-              <rect x="150" y="20" width="30" height="30" fill="white"/>
-              <rect x="10" y="140" width="50" height="50"/>
-              <rect x="20" y="150" width="30" height="30" fill="white"/>
-              
-              <!-- Данные (случайный паттерн) -->
-              <rect x="75" y="15" width="8" height="8"/>
-              <rect x="85" y="15" width="8" height="8"/>
-              <rect x="105" y="15" width="8" height="8"/>
-              <rect x="75" y="25" width="8" height="8"/>
-              <rect x="95" y="25" width="8" height="8"/>
-              <rect x="115" y="25" width="8" height="8"/>
-              <rect x="85" y="35" width="8" height="8"/>
-              <rect x="105" y="35" width="8" height="8"/>
-              <rect x="125" y="35" width="8" height="8"/>
-              
-              <rect x="15" y="75" width="8" height="8"/>
-              <rect x="25" y="75" width="8" height="8"/>
-              <rect x="45" y="75" width="8" height="8"/>
-              <rect x="15" y="85" width="8" height="8"/>
-              <rect x="35" y="85" width="8" height="8"/>
-              <rect x="55" y="85" width="8" height="8"/>
-              
-              <rect x="75" y="75" width="8" height="8"/>
-              <rect x="95" y="75" width="8" height="8"/>
-              <rect x="115" y="75" width="8" height="8"/>
-              <rect x="85" y="85" width="8" height="8"/>
-              <rect x="105" y="85" width="8" height="8"/>
-              <rect x="125" y="85" width="8" height="8"/>
-              
-              <rect x="145" y="75" width="8" height="8"/>
-              <rect x="165" y="75" width="8" height="8"/>
-              <rect x="185" y="75" width="8" height="8"/>
-              <rect x="155" y="85" width="8" height="8"/>
-              <rect x="175" y="85" width="8" height="8"/>
-              
-              <rect x="75" y="105" width="8" height="8"/>
-              <rect x="95" y="105" width="8" height="8"/>
-              <rect x="115" y="105" width="8" height="8"/>
-              <rect x="135" y="105" width="8" height="8"/>
-              <rect x="85" y="115" width="8" height="8"/>
-              <rect x="105" y="115" width="8" height="8"/>
-              <rect x="125" y="115" width="8" height="8"/>
-              <rect x="145" y="115" width="8" height="8"/>
-              
-              <rect x="75" y="145" width="8" height="8"/>
-              <rect x="95" y="145" width="8" height="8"/>
-              <rect x="115" y="145" width="8" height="8"/>
-              <rect x="135" y="145" width="8" height="8"/>
-              <rect x="155" y="145" width="8" height="8"/>
-              <rect x="85" y="155" width="8" height="8"/>
-              <rect x="105" y="155" width="8" height="8"/>
-              <rect x="125" y="155" width="8" height="8"/>
-              <rect x="165" y="155" width="8" height="8"/>
-              <rect x="75" y="165" width="8" height="8"/>
-              <rect x="115" y="165" width="8" height="8"/>
-              <rect x="155" y="165" width="8" height="8"/>
-              <rect x="185" y="165" width="8" height="8"/>
-            </g>
-          </svg>
+        <div v-if="isQrLoading" class="qr-loading">
+          <n-spin size="medium" />
         </div>
         
-        <div class="scan-animation">
+        <div v-else class="qr-code">
+          <img 
+            :src="qrCodeUrl" 
+            :alt="qrAltText"
+            @load="onQrLoad"
+            @error="onQrError"
+          />
+        </div>
+        
+        <div v-if="!isQrLoading" class="scan-animation">
           <div class="scan-line"></div>
         </div>
       </div>
 
       <div class="store-badges">
-        <a href="#" class="store-badge app-store">
+        <a :href="appStoreLink" class="store-badge app-store" target="_blank">
           <Icon icon="mdi:apple" />
           <div class="badge-text">
             <span class="badge-small">Загрузите в</span>
@@ -93,7 +35,7 @@
           </div>
         </a>
         
-        <a href="#" class="store-badge google-play">
+        <a :href="googlePlayLink" class="store-badge google-play" target="_blank">
           <Icon icon="mdi:google-play" />
           <div class="badge-text">
             <span class="badge-small">Доступно в</span>
@@ -117,15 +59,60 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
+import { NSpin } from 'naive-ui';
+import { QrServerGenerator } from '~/services/qrApi';
 
 interface Props {
   isVisible?: boolean;
 }
 
 defineProps<Props>();
-</script>
 
+// Ссылки на приложение
+const appStoreLink = 'https://apps.apple.com/app/fitness-trainer';
+const googlePlayLink = 'https://play.google.com/store/apps/details?id=com.fitnesstrainer';
+
+const isQrLoading = ref(true);
+const qrGenerator = new QrServerGenerator();
+
+// Генерируем QR-код с ссылкой на лендинг или deep link
+const qrData = computed(() => {
+  // Можно использовать ссылку на лендинг или универсальную ссылку
+  return 'https://ugkp.ru/';
+  // Или deep link: return 'fitnesstrainer://download';
+});
+
+const qrCodeUrl = computed(() => {
+  return qrGenerator.generate(qrData.value, 300);
+});
+
+const qrAltText = computed(() => {
+  return `QR-код для скачивания приложения Твой Фитнес-Тренер`;
+});
+
+const onQrLoad = () => {
+  isQrLoading.value = false;
+};
+
+const onQrError = () => {
+  console.error('Ошибка загрузки QR-кода');
+  isQrLoading.value = false;
+};
+
+onMounted(() => {
+  // Предзагрузка QR-кода
+  const img = new Image();
+  img.src = qrCodeUrl.value;
+  img.onload = () => {
+    isQrLoading.value = false;
+  };
+  img.onerror = () => {
+    isQrLoading.value = false;
+  };
+});
+</script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/contacts.scss';

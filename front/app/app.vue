@@ -5,12 +5,7 @@
       <div class="app-container">
         <WelcomeSection />
         <AdvantagesSection />
-        
-        <!-- Остальные секции добавим позже -->
-        <section id="reviews" class="section-placeholder">
-          <!-- Блок отзывов -->
-        </section>
-        
+        <ReviewsSection />
         <ContactFormSection />
         <ContactsSection />
       </div>
@@ -27,6 +22,7 @@ import MainHeader from '~/components/navigation/MainHeader.vue';
 import MainFooter from '~/components/footer/MainFooter.vue';
 import WelcomeSection from '~/layouts/WelcomeSection.vue';
 import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
+import ReviewsSection from '~/layouts/ReviewsSection.vue';
 import ContactFormSection from '~/layouts/ContactFormSection.vue';
 import ContactsSection from '~/layouts/ContactsSection.vue';
 
