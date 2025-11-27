@@ -132,7 +132,7 @@
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -2px;
         left: 0;
@@ -401,8 +401,6 @@
     transform: rotate(360deg);
   }
 }
-
-// ===== АДАПТИВНОСТЬ =====
 
 @media (max-width: 1200px) {
   .footer-grid {

@@ -15,29 +15,29 @@
 </template>
 
 <script setup lang="ts">
-import { NConfigProvider, NMessageProvider } from 'naive-ui';
-import type { GlobalThemeOverrides } from 'naive-ui';
+import { NConfigProvider, NMessageProvider } from "naive-ui";
+import type { GlobalThemeOverrides } from "naive-ui";
 
-import MainHeader from '~/components/navigation/MainHeader.vue';
-import MainFooter from '~/components/footer/MainFooter.vue';
-import WelcomeSection from '~/layouts/WelcomeSection.vue';
-import AdvantagesSection from '~/layouts/AdvantagesSection.vue';
-import ReviewsSection from '~/layouts/ReviewsSection.vue';
-import ContactFormSection from '~/layouts/ContactFormSection.vue';
-import ContactsSection from '~/layouts/ContactsSection.vue';
+import MainHeader from "~/components/navigation/MainHeader.vue";
+import MainFooter from "~/components/footer/MainFooter.vue";
+import WelcomeSection from "~/layouts/WelcomeSection.vue";
+import AdvantagesSection from "~/layouts/AdvantagesSection.vue";
+import ReviewsSection from "~/layouts/ReviewsSection.vue";
+import ContactFormSection from "~/layouts/ContactFormSection.vue";
+import ContactsSection from "~/layouts/ContactsSection.vue";
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: '#667eea',
-    primaryColorHover: '#5568d3',
-    primaryColorPressed: '#4c5fd6',
-    borderRadius: '12px',
+    primaryColor: "#667eea",
+    primaryColorHover: "#5568d3",
+    primaryColorPressed: "#4c5fd6",
+    borderRadius: "12px",
   },
   Button: {
-    borderRadiusLarge: '12px',
-    fontSizeLarge: '1.1rem',
-    heightLarge: '56px',
-    paddingLarge: '0 32px',
+    borderRadiusLarge: "12px",
+    fontSizeLarge: "1.1rem",
+    heightLarge: "56px",
+    paddingLarge: "0 32px",
   },
 };
 </script>
@@ -54,8 +54,15 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -74,7 +81,7 @@ body {
   background: #f5f5f5;
   color: #666;
   font-size: 1.5rem;
-  
+
   &:nth-child(odd) {
     background: #fff;
   }

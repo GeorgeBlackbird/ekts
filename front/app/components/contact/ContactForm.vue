@@ -81,10 +81,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Icon } from '@iconify/vue';
-import { NForm, NFormItem, NInput, NSelect, NButton, useMessage } from 'naive-ui';
-import type { FormInst, FormRules } from 'naive-ui';
+import { ref } from "vue";
+import { Icon } from "@iconify/vue";
+import {
+  NForm,
+  NFormItem,
+  NInput,
+  NSelect,
+  NButton,
+  useMessage,
+} from "naive-ui";
+import type { FormInst, FormRules } from "naive-ui";
 
 interface Props {
   isVisible?: boolean;
@@ -105,56 +112,56 @@ interface FormValue {
 }
 
 const formValue = ref<FormValue>({
-  name: '',
-  email: '',
+  name: "",
+  email: "",
   subject: null,
-  message: '',
+  message: "",
 });
 
 const subjectOptions = [
-  { label: 'Вопрос о приложении', value: 'app' },
-  { label: 'Технические проблемы', value: 'tech' },
-  { label: 'Подбор программы', value: 'program' },
-  { label: 'Сотрудничество', value: 'partnership' },
-  { label: 'Другое', value: 'other' },
+  { label: "Вопрос о приложении", value: "app" },
+  { label: "Технические проблемы", value: "tech" },
+  { label: "Подбор программы", value: "program" },
+  { label: "Сотрудничество", value: "partnership" },
+  { label: "Другое", value: "other" },
 ];
 
 const rules: FormRules = {
   name: {
     required: true,
-    message: 'Пожалуйста, введи своё имя',
-    trigger: 'blur',
+    message: "Пожалуйста, введи своё имя",
+    trigger: "blur",
   },
   email: {
     required: true,
     validator: (_rule, value: string) => {
       if (!value) {
-        return new Error('Пожалуйста, введи email');
+        return new Error("Пожалуйста, введи email");
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        return new Error('Некорректный email адрес');
+        return new Error("Некорректный email адрес");
       }
       return true;
     },
-    trigger: ['blur', 'input'],
+    trigger: ["blur", "input"],
   },
   subject: {
     required: true,
-    message: 'Выбери тему обращения',
-    trigger: 'change',
+    message: "Выбери тему обращения",
+    trigger: "change",
   },
   message: {
     required: true,
     validator: (_rule, value: string) => {
       if (!value) {
-        return new Error('Пожалуйста, введи сообщение');
+        return new Error("Пожалуйста, введи сообщение");
       }
       if (value.length < 10) {
-        return new Error('Сообщение должно содержать минимум 10 символов');
+        return new Error("Сообщение должно содержать минимум 10 символов");
       }
       return true;
     },
-    trigger: 'blur',
+    trigger: "blur",
   },
 };
 
@@ -165,13 +172,12 @@ const handleSubmit = async () => {
     await formRef.value.validate();
     isLoading.value = true;
 
-    // Имитация отправки
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     isSubmitted.value = true;
-    message.success('Сообщение успешно отправлено!');
+    message.success("Сообщение успешно отправлено!");
   } catch (error) {
-    message.error('Пожалуйста, заполни все обязательные поля');
+    message.error("Пожалуйста, заполни все обязательные поля");
   } finally {
     isLoading.value = false;
   }
@@ -180,14 +186,14 @@ const handleSubmit = async () => {
 const resetForm = () => {
   isSubmitted.value = false;
   formValue.value = {
-    name: '',
-    email: '',
+    name: "",
+    email: "",
     subject: null,
-    message: '',
+    message: "",
   };
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/contact-form.scss';
+@import "@/assets/styles/contact-form.scss";
 </style>

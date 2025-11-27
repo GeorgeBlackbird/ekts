@@ -7,7 +7,11 @@
             <Icon icon="mdi:dumbbell" />
             <span>Твой Фитнес-Тренер</span>
           </div>
-          <button class="menu-close" @click="$emit('close')" aria-label="Закрыть меню">
+          <button
+            class="menu-close"
+            @click="$emit('close')"
+            aria-label="Закрыть меню"
+          >
             <Icon icon="mdi:close" />
           </button>
         </div>
@@ -15,16 +19,11 @@
         <NavigationMenu
           :active-section="activeSection"
           :is-mobile="true"
-          @navigate="$emit('navigate', $event)"
+          @navigate="handleNavigate"
         />
 
         <div class="mobile-menu-footer">
-          <n-button
-            type="primary"
-            block
-            size="large"
-            @click="handleDownload"
-          >
+          <n-button type="primary" block size="large" @click="handleDownload">
             <template #icon>
               <Icon icon="mdi:download" />
             </template>
@@ -52,9 +51,9 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import { NButton } from 'naive-ui';
-import NavigationMenu from './NavigationMenu.vue';
+import { Icon } from "@iconify/vue";
+import { NButton } from "naive-ui";
+import NavigationMenu from "./NavigationMenu.vue";
 
 interface Props {
   isOpen: boolean;
@@ -68,13 +67,15 @@ const emit = defineEmits<{
   navigate: [sectionId: string];
 }>();
 
+const handleNavigate = (sectionId: string) => {
+  emit("navigate", sectionId);
+};
+
 const handleDownload = () => {
-  emit('navigate', 'contacts');
-  emit('close');
+  emit("navigate", "contacts");
 };
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/navigation.scss';
+@import "@/assets/styles/navigation.scss";
 </style>

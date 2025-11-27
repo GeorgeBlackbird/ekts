@@ -25,7 +25,6 @@ interface Props {
 defineProps<Props>();
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/footer.scss';
+@import "@/assets/styles/footer.scss";
 </style>

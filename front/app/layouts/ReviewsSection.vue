@@ -6,7 +6,8 @@
           Что говорят <span class="highlight">наши пользователи</span>
         </h2>
         <p class="section-subtitle">
-          Реальные отзывы людей, которые достигли своих целей с нашим приложением
+          Реальные отзывы людей, которые достигли своих целей с нашим
+          приложением
         </p>
       </div>
 
@@ -45,13 +46,13 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import { useScrollAnimation } from '@/composables/useScrollAnimation';
-import ReviewCarousel from '@/components/reviews/ReviewCarousel.vue';
+import { Icon } from "@iconify/vue";
+import { useScrollAnimation } from "@/composables/useScrollAnimation";
+import ReviewCarousel from "@/components/reviews/ReviewCarousel.vue";
 
 const { isVisible, elementRef: sectionRef } = useScrollAnimation(0.15);
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/reviews.scss';
+@import "@/assets/styles/reviews.scss";
 </style>

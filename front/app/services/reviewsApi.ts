@@ -1,25 +1,19 @@
 import reviews from "@/mock/reviews.json";
 
-//#region Primitives
 interface UserReview {
   LastName: string;
   FirstName: string;
   FatherName: string;
-  Gender: Gender
+  Gender: Gender;
   Star: number;
   Review?: string;
 }
 type Gender = "Женщина" | "Мужчина";
-//#endregion
 
-//#region Interfaces
 interface Reviews {
   getReviews(limit: number): Promise<UserReview[]>;
-  //TODO updateReviews
 }
-//#endregion
 
-//#region Mock
 interface MockReviewTexts {
   Женщина: string[];
   Мужчина: string[];
@@ -40,12 +34,12 @@ class TemplateReviews implements Reviews {
   }
 
   getRandomReview(gender: Gender): string {
-    const reviewsArray = this.reviews[gender];    
+    const reviewsArray = this.reviews[gender];
     if (!reviewsArray || reviewsArray.length === 0) {
       return "Отличное приложение!";
     }
     const randomIndex = Math.floor(Math.random() * reviewsArray.length);
-    return reviewsArray[randomIndex] ?? '';
+    return reviewsArray[randomIndex] ?? "";
   }
 
   async getReviews(limit: number): Promise<UserReview[]> {
@@ -60,7 +54,7 @@ class TemplateReviews implements Reviews {
 
       return (JSON.parse(data as string) as UserReview[]).map((person) => {
         const { LastName, FirstName, FatherName, Gender } = person;
-        
+
         return {
           LastName,
           FirstName,
@@ -76,6 +70,5 @@ class TemplateReviews implements Reviews {
     }
   }
 }
-//#endregion
 
 export { TemplateReviews };

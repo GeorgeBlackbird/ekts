@@ -1,3 +1,72 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import { Icon } from "@iconify/vue";
+import { NButton, useMessage } from "naive-ui";
+import { useActiveSection } from "~/composables/useActiveSection";
+import NavigationMenu from "./NavigationMenu.vue";
+import MobileMenu from "./MobileMenu.vue";
+
+const message = useMessage();
+const { activeSection, scrollToSection } = useActiveSection();
+
+const isScrolled = ref(false);
+const isMobileMenuOpen = ref(false);
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
+});
+
+watch(isMobileMenuOpen, (isOpen) => {
+  if (isOpen) {
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  } else {
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  }
+});
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+const handleNavigate = (sectionId: string) => {
+  scrollToSection(sectionId);
+};
+
+const handleDownload = () => {
+  message.success("Скачивание начнётся автоматически...");
+  scrollToSection("contacts");
+};
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false;
+};
+
+const handleMobileNavigate = (sectionId: string) => {
+  isMobileMenuOpen.value = false;
+
+  setTimeout(() => {
+    scrollToSection(sectionId);
+  }, 300);
+};
+</script>
+
 <template>
   <header class="main-header" :class="{ scrolled: isScrolled }">
     <div class="header-container">
@@ -40,72 +109,16 @@
         </button>
       </div>
     </div>
-
-    <MobileMenu
-      :is-open="isMobileMenuOpen"
-      :active-section="activeSection"
-      @navigate="handleMobileNavigate"
-      @close="closeMobileMenu"
-    />
   </header>
+
+  <MobileMenu
+    :is-open="isMobileMenuOpen"
+    :active-section="activeSection"
+    @navigate="handleMobileNavigate"
+    @close="closeMobileMenu"
+  />
 </template>
 
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import { Icon } from '@iconify/vue';
-import { NButton, useMessage } from 'naive-ui';
-import { useActiveSection } from '~/composables/useActiveSection';
-import NavigationMenu from './NavigationMenu.vue';
-import MobileMenu from './MobileMenu.vue';
-
-const message = useMessage();
-const { activeSection, scrollToSection } = useActiveSection();
-
-const isScrolled = ref(false);
-const isMobileMenuOpen = ref(false);
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
-};
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
-});
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-const handleNavigate = (sectionId: string) => {
-  scrollToSection(sectionId);
-};
-
-const handleDownload = () => {
-  message.success('Скачивание начнётся автоматически...');
-  scrollToSection('contacts');
-};
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  document.body.style.overflow = isMobileMenuOpen.value ? 'hidden' : '';
-};
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false;
-  document.body.style.overflow = '';
-};
-
-const handleMobileNavigate = (sectionId: string) => {
-  scrollToSection(sectionId);
-  closeMobileMenu();
-};
-</script>
-
 <style lang="scss" scoped>
-@import '@/assets/styles/navigation.scss';
+@import "@/assets/styles/navigation.scss";
 </style>

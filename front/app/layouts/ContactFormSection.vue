@@ -6,7 +6,8 @@
           Остались <span class="highlight">вопросы</span>?
         </h2>
         <p class="section-subtitle">
-          Свяжись с нами — мы всегда готовы помочь начать твой путь к идеальной форме
+          Свяжись с нами — мы всегда готовы помочь начать твой путь к идеальной
+          форме
         </p>
       </div>
 
@@ -24,13 +25,13 @@
 </template>
 
 <script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-import ContactInfo from '@/components/contact/ContactInfo.vue';
-import ContactForm from '@/components/contact/ContactForm.vue';
+import { useScrollAnimation } from "~/composables/useScrollAnimation";
+import ContactInfo from "@/components/contact/ContactInfo.vue";
+import ContactForm from "@/components/contact/ContactForm.vue";
 
 const { isVisible, elementRef: sectionRef } = useScrollAnimation(0.15);
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/contact-form.scss';
+@import "@/assets/styles/contact-form.scss";
 </style>

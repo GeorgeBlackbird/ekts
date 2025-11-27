@@ -9,25 +9,30 @@
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(102, 126, 234, 0.2) 50%, 
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(102, 126, 234, 0.2) 50%,
       transparent 100%
     );
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(102, 126, 234, 0.08) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     top: -200px;
     right: -200px;
@@ -37,8 +42,15 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 0.8; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .advantages-container {
@@ -76,7 +88,7 @@
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -8px;
         left: 0;
@@ -110,7 +122,7 @@
   background: white;
   border-radius: clamp(20px, 3vw, 28px);
   padding: clamp(32px, 5vw, 40px);
-  box-shadow: 
+  box-shadow:
     0 4px 20px rgba(102, 126, 234, 0.08),
     0 0 0 1px rgba(102, 126, 234, 0.04);
   position: relative;
@@ -127,14 +139,14 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: clamp(20px, 3vw, 28px);
     padding: 2px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -144,7 +156,7 @@
 
   &:hover {
     transform: translateY(-12px);
-    box-shadow: 
+    box-shadow:
       0 24px 48px rgba(102, 126, 234, 0.2),
       0 0 0 1px rgba(102, 126, 234, 0.1);
 
@@ -208,9 +220,6 @@
   margin: 0;
 }
 
-// ===== АДАПТИВНОСТЬ =====
-
-// Большие экраны (1440px+)
 @media (min-width: 1440px) {
   .advantages-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -222,7 +231,6 @@
   }
 }
 
-// Десктопы (1024px - 1439px)
 @media (max-width: 1439px) and (min-width: 1024px) {
   .advantages-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -230,7 +238,6 @@
   }
 }
 
-// Планшеты (768px - 1023px)
 @media (max-width: 1023px) {
   .advantages-section {
     padding: 80px 20px;
@@ -246,7 +253,6 @@
   }
 }
 
-// Мобильные устройства (до 767px)
 @media (max-width: 767px) {
   .advantages-section {
     padding: 70px 16px;
@@ -291,7 +297,6 @@
   }
 }
 
-// Маленькие мобильные (до 479px)
 @media (max-width: 479px) {
   .advantages-section {
     padding: 60px 12px;
@@ -334,7 +339,6 @@
   }
 }
 
-// Очень маленькие экраны (до 360px)
 @media (max-width: 360px) {
   .advantages-section {
     padding: 50px 10px;
@@ -363,7 +367,6 @@
   }
 }
 
-// Ландшафтная ориентация на мобильных
 @media (max-height: 600px) and (orientation: landscape) {
   .advantages-section {
     padding: 60px 20px;
@@ -379,7 +382,6 @@
   }
 }
 
-// Средние планшеты (между 600px и 900px)
 @media (min-width: 600px) and (max-width: 900px) {
   .advantages-grid {
     grid-template-columns: repeat(2, 1fr);
