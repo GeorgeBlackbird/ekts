@@ -13,6 +13,6 @@ onMounted(async () => {
     "https://api.randomdatatools.ru"
   );
   const reviews = await temp.getReviews(10);
-  console.log(reviews);
+  console.log(reviews[0]);
 });
 </script>
