@@ -10,7 +10,6 @@ export const useActiveSection = () => {
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    // Если пользователь почти в самом низу страницы (в пределах 100px)
     if (documentHeight - scrollPosition < 100) {
       const sections = document.querySelectorAll("section[id]");
       const lastSection = sections[sections.length - 1];
@@ -44,17 +43,15 @@ export const useActiveSection = () => {
       {
         threshold: 0.3,
         rootMargin: "-80px 0px -50% 0px",
-      }
+      },
     );
 
     sections.forEach((section) => {
       observer?.observe(section);
     });
 
-    // Добавляем слушатель скролла для проверки нижней части страницы
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Проверяем сразу при монтировании
     checkBottomScroll();
   });
 
@@ -83,7 +80,6 @@ export const useActiveSection = () => {
         behavior: "smooth",
       });
 
-      // Принудительно обновляем активную секцию
       setTimeout(() => {
         activeSection.value = sectionId;
       }, 100);

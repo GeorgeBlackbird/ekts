@@ -3,8 +3,9 @@
     <div class="info-content">
       <h3 class="info-title">Начни прямо сейчас</h3>
       <p class="info-description">
-        Заполни форму, и наша команда свяжется с тобой в течение 24 часов. 
-        Мы поможем подобрать идеальную программу тренировок и ответим на все вопросы.
+        Заполни форму, и наша команда свяжется с тобой в течение 24 часов. Мы
+        поможем подобрать идеальную программу тренировок и ответим на все
+        вопросы.
       </p>
 
       <div class="info-items">
@@ -58,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
+import { Icon } from "@iconify/vue";
 
 interface Props {
   isVisible?: boolean;
@@ -68,5 +69,5 @@ defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/contact-form.scss';
+@import "@/assets/styles/contact-form.scss";
 </style>

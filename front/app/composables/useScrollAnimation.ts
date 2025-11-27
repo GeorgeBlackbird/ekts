@@ -17,7 +17,7 @@ export const useScrollAnimation = (threshold = 0.1) => {
           }
         });
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(elementRef.value);

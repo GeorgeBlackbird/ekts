@@ -1,6 +1,5 @@
 import reviews from "@/mock/reviews.json";
 
-//#region Primitives
 interface UserReview {
   LastName: string;
   FirstName: string;
@@ -11,16 +10,11 @@ interface UserReview {
   Icon: string;
 }
 type Gender = "Женщина" | "Мужчина";
-//#endregion
 
-//#region Interfaces
 interface Reviews {
   getReviews(limit: number): Promise<UserReview[]>;
-  //TODO updateReviews
 }
-//#endregion
 
-//#region Mock
 interface MockReviewTexts {
   Женщина: string[];
   Мужчина: string[];
@@ -105,7 +99,6 @@ class TemplateReviews implements Reviews {
     }
   }
 }
-//#endregion
 
 export type { UserReview };
 export { TemplateReviews };

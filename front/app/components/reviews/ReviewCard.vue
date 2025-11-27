@@ -49,7 +49,6 @@ const initials = computed(() => {
 });
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/reviews.scss';
+@import "@/assets/styles/reviews.scss";
 </style>

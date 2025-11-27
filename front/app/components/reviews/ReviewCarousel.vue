@@ -80,17 +80,15 @@ const slidesPerView = ref(3);
 const autoplayInterval = ref<ReturnType<typeof setInterval> | null>(null);
 
 const slideWidth = computed(() => 100 / slidesPerView.value);
-const maxIndex = computed(() => Math.max(0, Math.ceil(reviews.value.length / slidesPerView.value) - 1));
+const maxIndex = computed(() =>
+  Math.max(0, Math.ceil(reviews.value.length / slidesPerView.value) - 1),
+);
 
 const updateSlidesPerView = () => {
   const width = window.innerWidth;
-  if (width < 768) {
-    slidesPerView.value = 1;
-  } else if (width < 1024) {
-    slidesPerView.value = 2;
-  } else {
-    slidesPerView.value = 3;
-  }
+  if (width <= 767) slidesPerView.value = 1;
+  else if (width <= 1200) slidesPerView.value = 2;
+  else slidesPerView.value = 3;
 };
 
 const loadReviews = async () => {
@@ -98,13 +96,13 @@ const loadReviews = async () => {
   error.value = null;
 
   try {
-    const api = new TemplateReviews('https://api.randomdatatools.ru');
+    const api = new TemplateReviews("https://api.randomdatatools.ru");
     const data = await api.getReviews(12);
     reviews.value = data;
   } catch (err) {
-    console.error('Ошибка загрузки отзывов:', err);
-    error.value = 'Не удалось загрузить отзывы. Попробуйте обновить страницу.';
-    message.error('Ошибка загрузки отзывов');
+    console.error("Ошибка загрузки отзывов:", err);
+    error.value = "Не удалось загрузить отзывы. Попробуйте обновить страницу.";
+    message.error("Ошибка загрузки отзывов");
   } finally {
     isLoading.value = false;
   }
@@ -146,17 +144,16 @@ const stopAutoplay = () => {
 onMounted(() => {
   loadReviews();
   updateSlidesPerView();
-  window.addEventListener('resize', updateSlidesPerView);
+  window.addEventListener("resize", updateSlidesPerView);
   startAutoplay();
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateSlidesPerView);
+  window.removeEventListener("resize", updateSlidesPerView);
   stopAutoplay();
 });
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/reviews.scss';
+@import "@/assets/styles/reviews.scss";
 </style>

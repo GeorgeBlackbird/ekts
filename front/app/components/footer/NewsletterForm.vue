@@ -4,7 +4,7 @@
     <p class="newsletter-description">
       Получай эксклюзивные советы, новые программы и специальные предложения
     </p>
-    
+
     <form v-if="!isSubscribed" @submit.prevent="handleSubmit">
       <n-input
         v-model:value="email"
@@ -17,7 +17,7 @@
           <Icon icon="mdi:email-outline" />
         </template>
       </n-input>
-      
+
       <n-button
         type="primary"
         size="large"
@@ -42,12 +42,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Icon } from '@iconify/vue';
-import { NInput, NButton, useMessage } from 'naive-ui';
+import { ref } from "vue";
+import { Icon } from "@iconify/vue";
+import { NInput, NButton, useMessage } from "naive-ui";
 
 const message = useMessage();
-const email = ref('');
+const email = ref("");
 const emailError = ref(false);
 const isLoading = ref(false);
 const isSubscribed = ref(false);
@@ -61,28 +61,26 @@ const handleSubmit = async () => {
 
   if (!email.value) {
     emailError.value = true;
-    message.error('Введи email адрес');
+    message.error("Введи email адрес");
     return;
   }
 
   if (!validateEmail(email.value)) {
     emailError.value = true;
-    message.error('Некорректный email адрес');
+    message.error("Некорректный email адрес");
     return;
   }
 
   isLoading.value = true;
 
-  // Имитация отправки
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   isSubscribed.value = true;
-  message.success('Успешно подписан!');
+  message.success("Успешно подписан!");
   isLoading.value = false;
 };
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/footer.scss';
+@import "@/assets/styles/footer.scss";
 </style>
