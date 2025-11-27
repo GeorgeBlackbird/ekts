@@ -655,7 +655,7 @@
 // Очень маленькие экраны (до 360px)
 @media (max-width: 360px) {
   .welcome-section {
-    padding: 60px 10px 30px;
+    padding: 100px 10px 30px;
   }
 
   .hero-content {
@@ -681,6 +681,10 @@
 
   .phone-mockup {
     max-width: 200px;
+    
+    .workout-card {
+      padding: 0;
+    }
   }
 
   .floating-card {

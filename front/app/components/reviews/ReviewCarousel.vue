@@ -93,13 +93,9 @@ const maxIndex = computed(() => Math.max(0, Math.ceil(reviews.value.length / sli
 
 const updateSlidesPerView = () => {
   const width = window.innerWidth;
-  if (width < 768) {
-    slidesPerView.value = 1;
-  } else if (width < 1024) {
-    slidesPerView.value = 2;
-  } else {
-    slidesPerView.value = 3;
-  }
+  if (width <= 767) slidesPerView.value = 1;
+  else if (width <= 1200) slidesPerView.value = 2; // Согласовано с CSS
+  else slidesPerView.value = 3;
 };
 
 const loadReviews = async () => {
