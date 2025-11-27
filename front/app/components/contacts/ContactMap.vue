@@ -9,7 +9,7 @@
         loading="lazy"
         title="Карта офиса"
       ></iframe>
-      
+
       <div class="map-overlay">
         <div class="location-badge">
           <Icon icon="mdi:map-marker" class="badge-icon" />
@@ -20,12 +20,8 @@
         </div>
       </div>
     </div>
-    
-    <n-button
-      text
-      class="direction-button"
-      @click="openMaps"
-    >
+
+    <n-button text class="direction-button" @click="openMaps">
       <template #icon>
         <Icon icon="mdi:directions" />
       </template>
@@ -35,8 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import { NButton } from 'naive-ui';
+import { Icon } from "@iconify/vue";
+import { NButton } from "naive-ui";
 
 interface Props {
   isVisible?: boolean;
@@ -45,11 +41,10 @@ interface Props {
 defineProps<Props>();
 
 const openMaps = () => {
-  window.open('https://yandex.ru/maps/', '_blank');
+  window.open("https://yandex.ru/maps/", "_blank");
 };
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/contacts.scss';
+@import "@/assets/styles/contacts.scss";
 </style>

@@ -30,14 +30,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Icon } from '@iconify/vue';
+import { computed } from "vue";
+import { Icon } from "@iconify/vue";
 
 interface UserReview {
   LastName: string;
   FirstName: string;
   FatherName: string;
-  Gender: 'Женщина' | 'Мужчина';
+  Gender: "Женщина" | "Мужчина";
   Star: number;
   Review?: string;
 }
@@ -57,7 +57,6 @@ const initials = computed(() => {
 });
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/styles/reviews.scss';
+@import "@/assets/styles/reviews.scss";
 </style>

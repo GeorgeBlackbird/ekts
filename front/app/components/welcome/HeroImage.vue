@@ -30,17 +30,17 @@
           </div>
         </div>
       </div>
-      
+
       <div class="floating-card card-1">
         <Icon icon="mdi:fire" />
         <span>245 ккал</span>
       </div>
-      
+
       <div class="floating-card card-2">
         <Icon icon="mdi:heart-pulse" />
         <span>142 bpm</span>
       </div>
-      
+
       <div class="floating-card card-3">
         <Icon icon="mdi:trophy" />
         <span>12 дней подряд</span>
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
+import { Icon } from "@iconify/vue";
 </script>
 
 <style lang="scss" scoped>

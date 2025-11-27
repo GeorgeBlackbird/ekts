@@ -28,7 +28,7 @@
           </template>
           Позвонить нам
         </n-button>
-        
+
         <n-button
           size="large"
           secondary
@@ -40,7 +40,7 @@
           </template>
           Написать Email
         </n-button>
-        
+
         <n-button
           size="large"
           secondary
@@ -60,28 +60,28 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import { NButton } from 'naive-ui';
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-import ContactMap from '~/components/contacts/ContactMap.vue';
-import ContactDetails from '~/components/contacts/ContactDetails.vue';
-import DownloadQR from '~/components/contacts/DownloadQR.vue';
+import { Icon } from "@iconify/vue";
+import { NButton } from "naive-ui";
+import { useScrollAnimation } from "~/composables/useScrollAnimation";
+import ContactMap from "~/components/contacts/ContactMap.vue";
+import ContactDetails from "~/components/contacts/ContactDetails.vue";
+import DownloadQR from "~/components/contacts/DownloadQR.vue";
 
 const { isVisible, elementRef: sectionRef } = useScrollAnimation(0.15);
 
 const handleCall = () => {
-  window.location.href = 'tel:+78005553535';
+  window.location.href = "tel:+78005553535";
 };
 
 const handleEmail = () => {
-  window.location.href = 'mailto:support@fitnesstrainer.ru';
+  window.location.href = "mailto:support@fitnesstrainer.ru";
 };
 
 const handleTelegram = () => {
-  window.open('https://t.me/fitnesstrainer', '_blank');
+  window.open("https://t.me/fitnesstrainer", "_blank");
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/contacts.scss';
+@import "@/assets/styles/contacts.scss";
 </style>

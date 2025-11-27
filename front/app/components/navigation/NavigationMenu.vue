@@ -31,18 +31,18 @@ const emit = defineEmits<{
 }>();
 
 const menuItems: MenuItem[] = [
-  { id: 'welcome', label: 'Главная' },
-  { id: 'advantages', label: 'Преимущества' },
-  { id: 'reviews', label: 'Отзывы' },
-  { id: 'contact', label: 'Связаться' },
-  { id: 'contacts', label: 'Контакты' },
+  { id: "welcome", label: "Главная" },
+  { id: "advantages", label: "Преимущества" },
+  { id: "reviews", label: "Отзывы" },
+  { id: "contact", label: "Связаться" },
+  { id: "contacts", label: "Контакты" },
 ];
 
 const handleClick = (sectionId: string) => {
-  emit('navigate', sectionId);
+  emit("navigate", sectionId);
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/navigation.scss';
+@import "@/assets/styles/navigation.scss";
 </style>

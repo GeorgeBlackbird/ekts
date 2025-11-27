@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
-import { Icon } from '@iconify/vue';
-import { NButton, useMessage } from 'naive-ui';
-import { useActiveSection } from '~/composables/useActiveSection';
-import NavigationMenu from './NavigationMenu.vue';
-import MobileMenu from './MobileMenu.vue';
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import { Icon } from "@iconify/vue";
+import { NButton, useMessage } from "naive-ui";
+import { useActiveSection } from "~/composables/useActiveSection";
+import NavigationMenu from "./NavigationMenu.vue";
+import MobileMenu from "./MobileMenu.vue";
 
 const message = useMessage();
 const { activeSection, scrollToSection } = useActiveSection();
@@ -17,32 +17,28 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-  // Убеждаемся что скролл разблокирован
-  document.documentElement.style.overflow = '';
-  document.body.style.overflow = '';
+  window.removeEventListener("scroll", handleScroll);
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
 });
 
-// Следим за состоянием меню и блокируем/разблокируем скролл
 watch(isMobileMenuOpen, (isOpen) => {
   if (isOpen) {
-    // Блокируем скролл простым способом
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
   } else {
-    // Разблокируем скролл
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
   }
 });
 
 const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 const handleNavigate = (sectionId: string) => {
@@ -50,8 +46,8 @@ const handleNavigate = (sectionId: string) => {
 };
 
 const handleDownload = () => {
-  message.success('Скачивание начнётся автоматически...');
-  scrollToSection('contacts');
+  message.success("Скачивание начнётся автоматически...");
+  scrollToSection("contacts");
 };
 
 const toggleMobileMenu = () => {
@@ -63,13 +59,11 @@ const closeMobileMenu = () => {
 };
 
 const handleMobileNavigate = (sectionId: string) => {
-  // Закрываем меню
   isMobileMenuOpen.value = false;
-  
-  // Небольшая задержка для закрытия анимации меню
+
   setTimeout(() => {
     scrollToSection(sectionId);
-  }, 300); // Увеличил до 300ms для завершения анимации
+  }, 300);
 };
 </script>
 
@@ -126,5 +120,5 @@ const handleMobileNavigate = (sectionId: string) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/navigation.scss';
+@import "@/assets/styles/navigation.scss";
 </style>
