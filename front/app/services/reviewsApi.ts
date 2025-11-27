@@ -73,7 +73,6 @@ class TemplateReviews implements Reviews {
 
     const queryString = new URLSearchParams(params as any).toString();
     const icon = `${this.iconUrl}?${queryString}`;
-    console.log(icon);
     return icon;
   }
 
